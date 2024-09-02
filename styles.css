@@ -14,6 +14,41 @@
     padding: 0;
 }
 
+
+
+#pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+#pagination-controls button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#pagination-controls button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+#pagination-controls span {
+    align-self: center;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
 body {
     font-family: 'Roboto', Arial, sans-serif;
     line-height: 1.6;
@@ -58,6 +93,10 @@ main {
     transition: transform 0.3s ease-in-out;
 }
 
+.sidebar.show {
+    transform: translateX(0);
+}
+
 .sidebar h2 {
     margin-bottom: 1rem;
     color: var(--secondary-color);
@@ -65,6 +104,7 @@ main {
 
 #test-list {
     list-style-type: none;
+    padding: 0;
 }
 
 #test-list li {
@@ -122,22 +162,72 @@ main {
     border-color: var(--incorrect-color);
 }
 
+
+
+/* Container for the question navigation buttons */
+#question-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
 #next-btn {
-    display: block;
-    margin-top: 1.5rem;
-    padding: 0.8rem 1.5rem;
     background-color: var(--primary-color);
     color: #fff;
     border: none;
-    border-radius: 8px;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.2s ease;
+    width: 35%;  /* Takes up 48% of the container's width */
+    text-align: center;
+    box-sizing: border-box;
+    align-self: flex-end; /* Align to the left */
 }
 
-#next-btn:hover {
+#prev-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+    width: 35%;  /* Takes up 48% of the container's width */
+    text-align: center;
+    box-sizing: border-box;
+    align-self: flex-start; /* Align to the right */
+}
+
+#next-btn:hover:not(:disabled), #prev-btn:hover:not(:disabled) {
     background-color: var(--hover-color);
 }
+
+#next-btn:disabled, #prev-btn:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+/* Responsive styling for mobile devices */
+@media (max-width: 768px) {
+    #next-btn, #prev-btn {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        width: 50%;  /* Make buttons full-width on mobile */
+        margin-bottom: 1rem;  /* Add space between buttons when stacked */
+    }
+
+    #question-navigation {
+        flex-direction: row;
+        align-items: stretch;  /* Make sure buttons fill the container width */
+    }
+}
+
+
+
+
 
 #result {
     margin-top: 1.5rem;
@@ -179,6 +269,7 @@ footer {
 
     .sidebar {
         position: fixed;
+        height: fit-content;
         left: -250px;
         top: 0;
         bottom: 0;
@@ -200,7 +291,6 @@ footer {
     }
 }
 
-/* Animations */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
