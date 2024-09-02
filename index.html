@@ -3,33 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <title>Quiz App</title>
+    <title>threeteo App</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Basics of Computer Quiz</h1>
-            <h6>made with ❤ by Arjun sharma</h6>
-            <button id="toggle-sidebar">Test</button>
+            <h1>Dedo Test</h1>
+            <button id="toggle-sidebar" aria-label="Toggle Sidebar">☰</button>
         </header>
         <main>
+
+
             <div class="sidebar">
-                <h2>Tests</h2>
+                <h2>Testers</h2>
                 <ul id="test-list"></ul>
+                <div id="pagination-controls">
+                    <button id="prev-page" disabled>Previous</button>
+                    <span id="page-number">1</span>
+                    <button id="next-page">Next</button>
+                </div>
             </div>
+
+
+
+
+
+
             <div class="quiz-container">
                 <div id="question-container">
                     <h2 id="question"></h2>
                     <div id="options"></div>
                 </div>
-                <button id="next-btn" style="display: none;">Next</button>
+                
+
+                <div id="question-navigation">
+                    <button id="prev-btn" style="display: none;">Previous</button>
+                    <button id="next-btn" style="display: none;">Next</button>
+                </div>
+
                 <div id="result"></div>
+
+
+
+
             </div>
         </main>
         <footer>
-            <p>Developed by Arjun Sharma</p>
+            <p>Made with ❤ by Arjun Sharma</p>
         </footer>
     </div>
     <script src="script.js"></script>
